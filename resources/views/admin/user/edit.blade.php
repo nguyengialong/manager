@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form"  action="{{route('update_user',$users->id)}}" method="get" class="form-horizontal">
+                <form role="form"  action="{{route('update_user',$users->id)}}" method="post" class="form-horizontal">
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="form-group">

@@ -41,26 +41,35 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="nav-icon fas fa-tree"></i>
+            <span>Import Export File</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="dropdown-item" href="{{route('importForm')}}"><i class="fa fa-btn fa-plus"></i> Import Form</a>
+                <a class="dropdown-item" href="{{route('export')}}"><i class="fa fa-btn fa-plus"></i> Export</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill" aria-expanded="true" aria-controls="collapseUtill">
+            <i class="nav-icon fas fa-tree"></i>
+            <span>Role && Permission</span>
+        </a>
+        <div id="collapseUtill" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> Role</a>
+                <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> Permission</a>
+            </div>
+        </div>
+    </li>
 
 
 
 
-{{--    @if(Auth::check())--}}
-{{--        @if(Auth::user()->role == 1)--}}
-{{--            <li class="nav-item">--}}
-{{--                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapse">--}}
-{{--                    <i class="nav-icon fas fa-tree"></i>--}}
-{{--                    <span>Quản lý người dùng</span>--}}
-{{--                </a>--}}
-{{--                <div id="collapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">--}}
-{{--                    <div class="bg-white py-2 collapse-inner rounded">--}}
-{{--                        <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> Tạo mới</a>--}}
-{{--                        <a class="dropdown-item" href="{{route('list_users')}}"><i class="fa fa-btn fa-list-alt" ></i> Danh sách</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--    @endif--}}
-{{--@endif--}}
 
 <!-- Divider -->
     <hr class="sidebar-divider">

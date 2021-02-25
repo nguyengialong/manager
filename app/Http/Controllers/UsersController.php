@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 use App\Http\Requests\StoreUserRequest;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 class UsersController extends Controller
 {
     public function creat(){
-
         return view('admin.user.add');
     }
 
@@ -22,6 +24,7 @@ class UsersController extends Controller
     }
 
     public function store(StoreUserRequest $request){
+
 
         $users = new User();
         $users->name = $request->name;
@@ -70,9 +73,24 @@ class UsersController extends Controller
     }
 
     public  function  search(Request $request){
-        $search = User::where('name','like','%'.$request->key.'%')->get();
-        return view('admin.index',compact('search'));
+        $search = User::where('name','like','%'.$request->key.'%')->paginate(5);
+        return view('admin.user.search',compact('search'));
     }
+
+    public function  ViewImport(){
+        return view('admin.user.importForm');
+    }
+
+    public function importFile(Request  $request){
+        Excel::import(new UsersImport, request()->file('file'));
+        return back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
 
 
 }
