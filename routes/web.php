@@ -27,3 +27,17 @@ Route::group(['prefix'=>'admins'],function(){
     Route::get('/home','AdminController@home')->name('home')->middleware('auth');
 
 });
+
+Route::group(['prefix'=>'user'],function(){
+
+    Route::get('/add','UsersController@creat')->name('add_user');
+    Route::post('/store','UsersController@store')->name('user_store');
+    Route::get('/edit/{id}','UsersController@edit')->name('edit_user');
+    Route::get('/detail/{id}','UsersController@show')->name('detail_user');
+    Route::get('/update/{id}','UsersController@update')->name('update_user');
+    Route::get('/delete/{id}','UsersController@destroy')->name('delete_user');
+    Route::get('/search','UsersController@search')->name('search');
+
+
+
+});
