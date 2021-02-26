@@ -37,9 +37,27 @@
                             <input type="text" class="form-control" id=""  name="name" placeholder="Tên role" required>
                         </div>
 
-                    <!-- /.card-body -->
+                        <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label>Permissions</label>
 
-                    <div class="card-footer">
+                            <input type="hidden" value="[]" name="permissions">
+
+                            <div class="row">
+                                @if(!empty($permission))
+                                    @foreach($permission as $value)
+                                    <div class="col-sm-4">
+                                        <div class="checkbox">
+                                            <label class="font-weight-normal">
+                                                <input type="checkbox" value="{{$value->id}}" name="{{$value->name}}"> {{$value->name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                @endif
+                            </div>
+
+
+                        </div>
+
 
                         <button type="submit" class="btn btn-success">Tạo mới</button>
                     </div>

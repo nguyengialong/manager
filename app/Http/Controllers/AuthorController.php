@@ -23,7 +23,9 @@ class AuthorController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
-        return view('admin.user.addrole');
+        $permission = Permission::all();
+
+        return view('admin.user.addrole', compact('permission'));
     }
 
     public function editRole($id){

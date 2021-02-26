@@ -39,11 +39,12 @@
 
                         <!-- /.card-body -->
 
-                        <div class="card-footer">
 
-                            <button type="submit" class="btn btn-success">Tạo mới</button>
-                        </div>
+
+                        <button type="submit" class="btn btn-success">Tạo mới</button>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>
