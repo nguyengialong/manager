@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Role</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Danh mục</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Role</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Người dùng</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
@@ -105,7 +105,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Guard_name</th>
-                            <th>Created</th>
+
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -116,10 +116,10 @@
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
                                 <td>{{$value->guard_name}}</td>
-                                <td>{{$value->created_at}}</td>
+
                                 <td>
 
-                                    <a href="" class="btn btn-outline-primary">Edit</a>
+                                    <a href="{{route('editRole',$value->id)}}" class="btn btn-outline-primary">Edit</a>
                                     <a href="{{route('destroyRole',$value->id)}}" class="btn btn-danger">Delete</a>
 
                                 </td>

@@ -30,6 +30,7 @@ class StoreUserRequest extends FormRequest
             'phone'   => 'numeric',
             'password'=> 'required|min:8',
             'address' => 'required',
+            'role'    => 'required',
         ];
     }
 
@@ -38,6 +39,7 @@ class StoreUserRequest extends FormRequest
         return [
 
             'name.required' => 'Tên không được để trống',
+            'role.required' => 'Role không được để trống',
             'email.required' => 'Email không được để trống',
             'email.unique' => 'Email đã tồn tại',
             'password.required' => 'Mật khẩu không được để trống',

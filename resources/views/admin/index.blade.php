@@ -106,24 +106,31 @@
                             <th>Email</th>
                             <th>Address</th>
                             <th>Phone</th>
-                            <th>Created</th>
                             <th>Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         @foreach($user as $value)
+
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
                                 <td>{{$value->email}}</td>
                                 <td>{{$value->address}}</td>
                                 <td>{{$value->phone}}</td>
-                                <td>{{$value->created_at}}</td>
+
                                 <td>
                                     <a href="{{route('detail_user',$value->id)}}" class="btn btn-success">Detail</a>
+
+{{--                                    @role('admins')--}}
                                     <a href="{{route('edit_user',$value->id)}}" class="btn btn-outline-primary">Edit</a>
+{{--                                    @endrole--}}
+
+{{--                                    @role('admins')--}}
                                     <a href="{{route('delete_user',$value->id)}}" class="btn btn-danger">Delete</a>
+{{--                                    @endrole--}}
+
 
                                 </td>
                         @endforeach

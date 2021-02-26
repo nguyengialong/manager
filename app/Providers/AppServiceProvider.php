@@ -5,7 +5,6 @@ namespace App\Providers;
 
 use App\User;
 use Illuminate\Support\ServiceProvider;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,8 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('admin.index', function($view){
 
-
-            $user = User::paginate('1');
+            $user = User::paginate('4');
 
             $view->with(['user'=>$user]);
 

@@ -45,10 +45,12 @@
                             <label for="exampleInputEmail1">Address</label>
                             <input type="text" class="form-control" id="" name="address" placeholder="Nhập vào địa chỉ" value="{{$users->address}}">
                         </div>
+                       @if(!empty($role[0]))
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Mật khẩu</label>
-                            <input type="password" class="form-control" id="" name="password" placeholder="Nhập vào mật khẩu" value="{{$users->password}}">
+                            <label for="exampleInputEmail1">Role</label>
+                            <input type="text" class="form-control" id=""  name="role" placeholder="Tên người dùng" value="{{$role[0]}}">
                         </div>
+                        @endif
                     </div>
                     <!-- /.card-body -->
 

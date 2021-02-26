@@ -34,8 +34,11 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> Tạo mới</a>
+{{--                @role('admins')--}}
+                    <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> Tạo mới</a>
+{{--                @endrole--}}
                 <a class="dropdown-item" href="{{route('home')}}"><i class="fa fa-btn fa-list-alt" ></i> Danh sách</a>
+
             </div>
         </div>
     </li>
@@ -61,8 +64,11 @@
         </a>
         <div id="collapseUtill" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> Role</a>
-                <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> Permission</a>
+{{--                @role('admins')--}}
+                    <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> Role</a>
+                    <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> Permission</a>
+{{--                @endrole--}}
+
             </div>
         </div>
     </li>

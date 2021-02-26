@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 //use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
-//use Auth;
+////use Auth;
 Route::get('/', function () {
     return view('admin.index');
 })->middleware('auth');
-//
+
 //Route::get('/', function () {
 //        $user = Auth::user();
 ////        $user->assignRole('user');
 ////
-//        $role =  Role::findById(1);
-//        $permission = Permission::findById(8);
+//        $role =  Role::findById(6);
+//        $permission = Permission::findById(3);
 //        $role->givePermissionTo($permission);
 //////    $role = Role::create(['name' => 'user']);
 ////    $permission = Permission::create(['name' => 'delete role']);
@@ -50,19 +50,26 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/detail/{id}','UsersController@show')->name('detail_user');
     Route::post('/update/{id}','UsersController@update')->name('update_user');
     Route::get('/delete/{id}','UsersController@destroy')->name('delete_user');
+
     Route::get('/search','UsersController@search')->name('search');
+
     Route::get('/importForm','UsersController@ViewImport')->name('importForm');
     Route::post('/importFile','UsersController@importFile')->name('importFile');
     Route::get('/export', 'UsersController@export')->name('export');
+
     Route::get('/role', 'AuthorController@roleIndex')->name('role');
     Route::get('/addrole', 'AuthorController@creatRole')->name('creatRole');
+    Route::get('/editrole/{id}', 'AuthorController@editRole')->name('editRole');
     Route::post('/storeRole', 'AuthorController@storeRole')->name('storeRole');
+    Route::post('/updateRole/{id}', 'AuthorController@updateRole')->name('updateRole');
     Route::get('/deleteRole/{id}', 'AuthorController@destroyRole')->name('destroyRole');
+
+
     Route::get('/permission', 'AuthorController@permissionIndex')->name('permission');
-    Route::get('/addpermission', 'AuthorController@permissionIndex')->name('addpermission');
-
-
-
-
+    Route::get('/addPermission', 'AuthorController@creatPermission')->name('createPermission');
+    Route::post('/storePermission', 'AuthorController@storePermission')->name('storePermission');
+    Route::get('/editPermission/{id}', 'AuthorController@editPermission')->name('editPermission');
+    Route::post('/updatePermission/{id}', 'AuthorController@updatePermission')->name('updatePermission');
+    Route::get('/deletePermission/{id}', 'AuthorController@destroyPermission')->name('destroyPermission');
 
 });
