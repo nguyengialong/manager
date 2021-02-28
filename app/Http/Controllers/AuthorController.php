@@ -36,7 +36,9 @@ class AuthorController extends Controller
         }
 
         $roles = Role::find($id);
-        return view('admin.user.editrole',compact('roles'));
+        $permissionOfRole= $roles->getAllPermissions();
+        $permission = Permission::all();
+        return view('admin.user.editrole',compact('roles','permissionOfRole','permission'));
     }
 
     public function updateRole(Request $request,$id){
@@ -46,9 +48,14 @@ class AuthorController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
+
         $roles = Role::findById($id);
         $roles->name = $request->name;
+        $permission = $request->input('permission');
+        $roles->syncPermissions($permission);
         $roles->save();
+
+
         return redirect()->route('role');
     }
 
@@ -62,10 +69,23 @@ class AuthorController extends Controller
 
 
         $roles = new Role();
-
         $roles->name = $request->name;
-
         $roles->save();
+        $permission = $request->input('permissions');
+        $roles->givePermissionTo($permission);
+
+//        $getRole = Role::findById($roles->id);
+//
+//        foreach ($request->except('_token','name') as $value)
+//        {
+//
+//            foreach ($value as $key){
+//
+//                $getPermission = Permission::findById($key);
+//                $getRole->givePermissionTo($getPermission);
+//            }
+//
+//        }
 
         return redirect()->route('role');
 
@@ -80,10 +100,11 @@ class AuthorController extends Controller
         }
 
         $roles = Role::find($id);
-        $a = $roles->getAllPermissions();
+        $getPermision= $roles->getAllPermissions();
 
-        foreach ($a as $value){
-           dump($roles->revokePermissionTo($value->name));
+        foreach ($getPermision as $value){
+
+           $roles->revokePermissionTo($value->name);
         }
 
         $roles->delete();

@@ -38,10 +38,33 @@
                         </div>
 
                         <!-- /.card-body -->
+                            <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label>Permissions</label>
 
+
+                                <div class="row">
+                                    @if(!empty($permission))
+                                        @foreach($permission as $value)
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label class="font-weight-normal">
+                                                        <input type="checkbox" value="{{$value->id}}" name="permission[]"
+                                                               @foreach($permissionOfRole as $key)
+                                                                   @if($value->id==$key->id)
+                                                                       checked
+                                                                    @endif
+                                                               @endforeach
+                                                        > {{$value->name}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    @endif
+                                </div>
+
+                            </div>
                         <div class="card-footer">
-
-                            <button type="submit" class="btn btn-success">Tạo mới</button>
+                            <button type="submit" class="btn btn-success">Update</button>
                         </div>
                 </form>
             </div>

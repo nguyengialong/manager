@@ -39,6 +39,7 @@ class UsersController extends Controller
     }
 
     public function store(StoreUserRequest $request){
+
         if(!Auth()->user()->hasRole('admins'))
         {
             return abort(403, 'Unauthorized action.');

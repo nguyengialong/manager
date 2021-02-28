@@ -47,7 +47,7 @@
                                     <div class="col-sm-4">
                                         <div class="checkbox">
                                             <label class="font-weight-normal">
-                                                <input type="checkbox" value="{{$value->id}}" name="{{$value->name}}"> {{$value->name}}
+                                                <input type="checkbox" value="{{$value->id}}" name="permissions[]"> {{$value->name}}
                                             </label>
                                         </div>
                                     </div>

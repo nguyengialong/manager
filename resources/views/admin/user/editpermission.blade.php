@@ -41,7 +41,7 @@
 
                         <div class="card-footer">
 
-                            <button type="submit" class="btn btn-success">Tạo mới</button>
+                            <button type="submit" class="btn btn-success">Update</button>
                         </div>
                 </form>
             </div>
