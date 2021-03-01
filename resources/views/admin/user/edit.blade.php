@@ -45,15 +45,23 @@
                             <label for="exampleInputEmail1">Address</label>
                             <input type="text" class="form-control" id="" name="address" placeholder="Nhập vào địa chỉ" value="{{$users->address}}">
                         </div>
-                       @if(!empty($role[0]))
+                        @if(!empty($role[0]))
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Role</label>
-                            <input type="text" class="form-control" id=""  name="role" placeholder="Tên role" value="{{$role[0]}}">
+                            <label>Role</label>
+                            <select class="form-control select2" name="role" style="width: 100%;">
+                                @foreach($allRole as $item)
+                                    <option value="{{$item->name}}" @if($item->name == $role[0]) selected @endif>{{ $item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                         @else
+                        @else
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Role</label>
-                                <input type="text" class="form-control" id=""  name="role" placeholder="Tên role" value="">
+                                <label>Role</label>
+                                <select class="form-control select2" name="role" style="width: 100%;">
+                                    @foreach($allRole as $item)
+                                        <option value="{{$item->name}}">{{ $item->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         @endif
                     </div>

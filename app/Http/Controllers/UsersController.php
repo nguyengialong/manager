@@ -21,8 +21,8 @@ class UsersController extends Controller
         {
             return abort(403, 'Unauthorized action.');
         }
-
-        return view('admin.user.add');
+        $role = Role::all();
+        return view('admin.user.add',compact('role'));
     }
 
     public function index(){
@@ -44,7 +44,7 @@ class UsersController extends Controller
         {
             return abort(403, 'Unauthorized action.');
         }
-
+//        dd($request->all());
         $users = new User();
         $users->name = $request->name;
         $users->email =$request->email;
@@ -71,7 +71,8 @@ class UsersController extends Controller
 
         $users = User::find($id);
         $role = $users->getRoleNames();
-        return view('admin.user.edit',compact('users','role'));
+        $allRole = Role::all();
+        return view('admin.user.edit',compact('users','role','allRole'));
 
     }
 

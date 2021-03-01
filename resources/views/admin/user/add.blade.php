@@ -61,9 +61,15 @@
                             <label for="exampleInputEmail1">Mật khẩu</label>
                             <input type="password" class="form-control" id="" name="password" placeholder="Nhập vào mật khẩu">
                         </div>
+
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Role</label>
-                            <input type="text" class="form-control" id=""  name="role" placeholder="Tên role">
+                            <label>Role</label>
+                            <select class="form-control select2" name="role" style="width: 100%;">
+                                @foreach($role as $item)
+                                <option value="{{$item->name}}">{{ $item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <!-- /.card-body -->
