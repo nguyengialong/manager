@@ -48,8 +48,13 @@
                        @if(!empty($role[0]))
                         <div class="form-group">
                             <label for="exampleInputEmail1">Role</label>
-                            <input type="text" class="form-control" id=""  name="role" placeholder="Tên người dùng" value="{{$role[0]}}">
+                            <input type="text" class="form-control" id=""  name="role" placeholder="Tên role" value="{{$role[0]}}">
                         </div>
+                         @else
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Role</label>
+                                <input type="text" class="form-control" id=""  name="role" placeholder="Tên role" value="">
+                            </div>
                         @endif
                     </div>
                     <!-- /.card-body -->
