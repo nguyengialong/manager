@@ -16,11 +16,11 @@ use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
     public function creat(){
-//
-//        if(!Auth()->user()->hasRole('admins'))
-//        {
-//            return abort(403, 'Unauthorized action.');
-//        }
+
+        if(!Auth()->user()->hasRole('admins'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         return view('admin.user.add');
     }
@@ -39,11 +39,11 @@ class UsersController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-//
-//        if(!Auth()->user()->hasRole('admins'))
-//        {
-//            return abort(403, 'Unauthorized action.');
-//        }
+
+        if(!Auth()->user()->hasRole('admins'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         $users = new User();
         $users->name = $request->name;
@@ -64,10 +64,10 @@ class UsersController extends Controller
 
     public function edit($id){
 
-//        if(!Auth()->user()->hasRole('admins'))
-//        {
-//            return abort(403, 'Unauthorized action.');
-//        }
+        if(!Auth()->user()->hasRole('admins'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         $users = User::find($id);
         $role = $users->getRoleNames();
@@ -78,10 +78,10 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){
 
-//        if(!Auth()->user()->hasRole('admins'))
-//        {
-//            return abort(403, 'Unauthorized action.');
-//        }
+        if(!Auth()->user()->hasRole('admins'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         $users = User::find($id);
         $users->name = $request->name;
