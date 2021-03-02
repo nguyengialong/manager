@@ -123,13 +123,13 @@
                                 <td>
                                     <a href="{{route('detail_user',$value->id)}}" class="btn btn-success">Detail</a>
 
-{{--                                    @role('admins')--}}
-                                    <a href="{{route('edit_user',$value->id)}}" class="btn btn-outline-primary">Edit</a>
-{{--                                    @endrole--}}
 
-{{--                                    @role('admins')--}}
+                                    <a href="{{route('edit_user',$value->id)}}" class="btn btn-outline-primary">Edit</a>
+
+
+
                                     <a href="{{route('delete_user',$value->id)}}" class="btn btn-danger">Delete</a>
-{{--                                    @endrole--}}
+
 
 
                                 </td>

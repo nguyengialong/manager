@@ -17,10 +17,11 @@ class UsersController extends Controller
 {
     public function creat(){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
+
         $role = Role::all();
         return view('admin.user.add',compact('role'));
     }
@@ -32,6 +33,11 @@ class UsersController extends Controller
 
     public function show($id){
 
+        if(!( Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('user') ))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $users = User::find($id);
         $role = $users->getRoleNames();
         return view('admin.user.detail',compact('users','role'));
@@ -40,11 +46,11 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
-//        dd($request->all());
+
         $users = new User();
         $users->name = $request->name;
         $users->email =$request->email;
@@ -53,18 +59,20 @@ class UsersController extends Controller
         $users->password = bcrypt($request->password);
         $users->save();
         $this->createRoleformUser($users->id,$request->role);
+
         return redirect()->route('home');
 
 
     }
     public function createRoleformUser($id,$role){
+
         $user = User::find($id);
         $user->assignRole($role);
     }
 
     public function edit($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -79,7 +87,7 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -100,7 +108,7 @@ class UsersController extends Controller
 
     public function destroy($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -114,16 +122,21 @@ class UsersController extends Controller
     }
 
     public  function  search(Request $request){
+
         $search = User::where('name','like','%'.$request->key.'%')->paginate(5);
+
         return view('admin.user.search',compact('search'));
     }
 
     public function  ViewImport(){
+
         return view('admin.user.importForm');
     }
 
     public function importFile(Request  $request){
+
         Excel::import(new UsersImport, request()->file('file'));
+
         return back();
     }
 

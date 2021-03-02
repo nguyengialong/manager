@@ -7,10 +7,12 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use App\User;
 
 class AuthorController extends Controller
 {
     public function roleIndex(){
+
         $role = Role::all();
         return view('admin.user.listRole',compact('role'));
     }
@@ -18,7 +20,7 @@ class AuthorController extends Controller
 
     public function creatRole(){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -30,7 +32,7 @@ class AuthorController extends Controller
 
     public function editRole($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -43,7 +45,7 @@ class AuthorController extends Controller
 
     public function updateRole(Request $request,$id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -62,7 +64,9 @@ class AuthorController extends Controller
 
     public function storeRole(Request $request){
 
-        if(!Auth()->user()->hasRole('admins'))
+
+
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -94,7 +98,7 @@ class AuthorController extends Controller
 
     public function destroyRole($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -115,7 +119,7 @@ class AuthorController extends Controller
 
     public function creatPermission(){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -132,7 +136,7 @@ class AuthorController extends Controller
 
     public function editPermission($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -144,7 +148,7 @@ class AuthorController extends Controller
 
     public function updatePermission(Request $request,$id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -162,7 +166,7 @@ class AuthorController extends Controller
 
     public function storePermission(Request $request){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -181,7 +185,7 @@ class AuthorController extends Controller
 
     public function destroyPermission($id){
 
-        if(!Auth()->user()->hasRole('admins'))
+        if(!Auth()->user()->hasRole('admin'))
         {
             return abort(403, 'Unauthorized action.');
         }
