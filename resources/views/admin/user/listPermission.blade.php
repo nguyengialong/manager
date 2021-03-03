@@ -94,7 +94,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Permission</h3>
+                    @can('add permission')
                     <a href="{{route('createPermission')}}" class="btn btn-success">Add Permission</a>
+                    @endcan
                 </div>
 
                 <!-- /.card-header -->
@@ -118,9 +120,12 @@
                                 <td>{{$value->guard_name}}</td>
 
                                 <td>
+                                    @can('edit permission')
                                     <a href="{{route('editPermission',$value->id)}}" class="btn btn-outline-primary">Edit</a>
+                                    @endcan
+                                    @can('delete permission')
                                     <a href="{{route('destroyPermission',$value->id)}}" class="btn btn-danger">Delete</a>
-
+                                     @endcan
                                 </td>
                         @endforeach
                         </tbody>

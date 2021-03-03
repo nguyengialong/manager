@@ -121,15 +121,18 @@
                                 <td>{{$value->phone}}</td>
 
                                 <td>
+
+                                    @can('detail user')
                                     <a href="{{route('detail_user',$value->id)}}" class="btn btn-success">Detail</a>
+                                    @endcan
 
-
+                                    @can('edit user')
                                     <a href="{{route('edit_user',$value->id)}}" class="btn btn-outline-primary">Edit</a>
+                                        @endcan
 
-
-
+                                        @can('delete user')
                                     <a href="{{route('delete_user',$value->id)}}" class="btn btn-danger">Delete</a>
-
+                                        @endcan
 
 
                                 </td>

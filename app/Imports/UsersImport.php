@@ -5,7 +5,9 @@ namespace App\Imports;
 use App\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-class UsersImport implements ToModel,WithHeadingRow
+use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\WithValidation;
+class UsersImport implements ToModel,WithHeadingRow,WithValidation
 {
     /**
     * @param array $row
@@ -25,5 +27,14 @@ class UsersImport implements ToModel,WithHeadingRow
             'remember_token' => $row['remember_token']
 
         ]);
+
     }
+    public function rules(): array
+    {
+        return [
+            '*.email' => ['email','unique:users,email']
+        ];
+    }
+
+
 }

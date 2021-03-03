@@ -64,6 +64,7 @@ class UsersController extends Controller
 
 
     }
+
     public function createRoleformUser($id,$role){
 
         $user = User::find($id);
@@ -130,10 +131,20 @@ class UsersController extends Controller
 
     public function  ViewImport(){
 
+        if(!Auth()->user()->hasRole('admin'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         return view('admin.user.importForm');
     }
 
-    public function importFile(Request  $request){
+    public function importFile(Request $request){
+
+        if(!Auth()->user()->hasRole('admin'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         Excel::import(new UsersImport, request()->file('file'));
 
@@ -142,6 +153,12 @@ class UsersController extends Controller
 
     public function export()
     {
+
+        if(!Auth()->user()->hasRole('admin'))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 

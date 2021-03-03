@@ -104,6 +104,7 @@ class AuthorController extends Controller
         }
 
         $roles = Role::find($id);
+
         $getPermision= $roles->getAllPermissions();
 
         foreach ($getPermision as $value){

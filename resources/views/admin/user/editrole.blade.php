@@ -38,7 +38,7 @@
                         </div>
 
                         <!-- /.card-body -->
-                            <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label>Permissions</label>
+                            <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label><b>Permissions</b></label>
 
 
                                 <div class="row">
@@ -66,7 +66,9 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>

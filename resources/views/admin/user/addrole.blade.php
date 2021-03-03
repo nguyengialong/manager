@@ -37,9 +37,9 @@
                             <input type="text" class="form-control" id=""  name="name" placeholder="Tên role" required>
                         </div>
 
-                        <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label>Permissions</label>
+                        <div data-init-function="bpFieldInitChecklist" class="form-group col-sm-12" element="div" data-initialized="true">    <label><b>Permissions</b></label>
 
-                            <input type="hidden" value="[]" name="permissions">
+
 
                             <div class="row">
                                 @if(!empty($permission))

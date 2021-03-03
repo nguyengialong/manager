@@ -94,9 +94,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Role</h3>
-
+                    @can('add role')
                     <a href="{{route('creatRole')}}" class="btn btn-success">Add Role</a>
-
+                    @endcan
                 </div>
 
                 <!-- /.card-header -->
@@ -120,10 +120,12 @@
                                 <td>{{$value->guard_name}}</td>
 
                                 <td>
-
+                                    @can('edit role')
                                     <a href="{{route('editRole',$value->id)}}" class="btn btn-outline-primary">Edit</a>
+                                    @endcan
+                                    @can('delete role')
                                     <a href="{{route('destroyRole',$value->id)}}" class="btn btn-danger">Delete</a>
-
+                                    @endcan
                                 </td>
                         @endforeach
                         </tbody>
