@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    container_name: manager_php
+    expose:
+      - "9000"
+    ports:
+      - "9000:9002"
+    volumes:
+      - ./:/var/www/html/
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: manager_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: blog
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 12345678
+    ports:
+      - '3309:3306'
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: manager_phpmyadmin
+    environment:
+      PMA_HOST: "mysql"
+    ports:
+      - '8088:80'
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  nginx:
+    image: nginx:1.19.7-alpine
+    container_name: manager_nginx
+    ports:
+      - '8098:90'
+    volumes:
+      - ./:/var/www/html/
+      - ./docker/nginx_log/:/var/log/nginx
+      - ./docker/nginx_conf:/etc/nginx/conf.d/
+    links:
+      - php
+
+  redis:
+    image: redis:6.0-alpine
+    container_name: manager_redis
+    ports:
+      - "6397:6379"
+
+
+
+
+
+
+
+
+
+
+
+
+

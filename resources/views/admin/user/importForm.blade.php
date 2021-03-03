@@ -31,7 +31,7 @@
             <div class="card-body">
                 <form action="{{route('importFile')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="file">
+                    <input type="file" name="file" required>
                     <br>
                     <br>
                     <button class="btn btn-primary" type="submit">Import Data</button>
