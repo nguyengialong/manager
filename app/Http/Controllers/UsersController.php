@@ -17,7 +17,7 @@ class UsersController extends Controller
 {
     public function creat(){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add user')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -32,11 +32,11 @@ class UsersController extends Controller
     }
 
     public function show($id){
-
-        if(!( Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('user') ))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('detail user')))
         {
             return abort(403, 'Unauthorized action.');
         }
+
 
         $users = User::find($id);
         $role = $users->getRoleNames();
@@ -45,11 +45,11 @@ class UsersController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add user')))
         {
             return abort(403, 'Unauthorized action.');
         }
+
 
         $users = new User();
         $users->name = $request->name;
@@ -73,7 +73,7 @@ class UsersController extends Controller
 
     public function edit($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit user')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -87,11 +87,11 @@ class UsersController extends Controller
 
 
     public function update(Request $request, $id){
-
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit user')))
         {
             return abort(403, 'Unauthorized action.');
         }
+
 
         $users = User::find($id);
         $users->name = $request->name;
@@ -109,10 +109,11 @@ class UsersController extends Controller
 
     public function destroy($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('delete user')))
         {
             return abort(403, 'Unauthorized action.');
         }
+
 
         $users = User::find($id);
         DB::table('model_has_roles')->where('model_id',$id)->delete();

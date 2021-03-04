@@ -20,7 +20,7 @@ class AuthorController extends Controller
 
     public function creatRole(){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add role')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -32,7 +32,7 @@ class AuthorController extends Controller
 
     public function editRole($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit role')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -44,13 +44,10 @@ class AuthorController extends Controller
     }
 
     public function updateRole(Request $request,$id){
-
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit role')))
         {
             return abort(403, 'Unauthorized action.');
         }
-
-
         $roles = Role::findById($id);
         $roles->name = $request->name;
         $permission = $request->input('permission');
@@ -66,7 +63,7 @@ class AuthorController extends Controller
 
 
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add role')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -98,7 +95,7 @@ class AuthorController extends Controller
 
     public function destroyRole($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('delete role')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -120,7 +117,7 @@ class AuthorController extends Controller
 
     public function creatPermission(){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add permission')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -137,7 +134,7 @@ class AuthorController extends Controller
 
     public function editPermission($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit permission')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -149,7 +146,7 @@ class AuthorController extends Controller
 
     public function updatePermission(Request $request,$id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit permission')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -167,7 +164,7 @@ class AuthorController extends Controller
 
     public function storePermission(Request $request){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add permission')))
         {
             return abort(403, 'Unauthorized action.');
         }
@@ -186,7 +183,7 @@ class AuthorController extends Controller
 
     public function destroyPermission($id){
 
-        if(!Auth()->user()->hasRole('admin'))
+        if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('delete permission')))
         {
             return abort(403, 'Unauthorized action.');
         }
