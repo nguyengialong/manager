@@ -44,10 +44,12 @@ class AuthorController extends Controller
     }
 
     public function updateRole(Request $request,$id){
+
         if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('edit role')))
         {
             return abort(403, 'Unauthorized action.');
         }
+
         $roles = Role::findById($id);
         $roles->name = $request->name;
         $permission = $request->input('permission');

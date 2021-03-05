@@ -31,7 +31,9 @@ Route::get('/', function () {
 //});
 
 Route::group(['prefix'=>'admins'],function(){
+
     Auth::routes();
+
     Route::get('/login','Auth\LoginController@login')->name('login');
     Route::get('/register','Auth\RegisterController@register')->name('register');
     Route::get('/logout','Auth\LoginController@logout')->name('logout');
@@ -50,6 +52,7 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/detail/{id}','UsersController@show')->name('detail_user');
     Route::post('/update/{id}','UsersController@update')->name('update_user');
     Route::get('/delete/{id}','UsersController@destroy')->name('delete_user');
+    Route::get('/fetch_data','UsersController@fetch_data')->name('fetch_data');
 
     Route::get('/search','UsersController@search')->name('search');
 

@@ -26,6 +26,17 @@ class UsersController extends Controller
         return view('admin.user.add',compact('role'));
     }
 
+    function fetch_data(Request $request)
+    {
+        if($request->ajax())
+        {
+
+            $user = User::paginate('4');
+
+            return view('admin.indexAjax', compact('user'))->render();
+        }
+    }
+
     public function index(){
 
         return view('admin.index');
@@ -161,6 +172,7 @@ class UsersController extends Controller
         }
 
         return Excel::download(new UsersExport, 'users.xlsx');
+
     }
 
 

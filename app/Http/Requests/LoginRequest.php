@@ -38,7 +38,6 @@ class LoginRequest extends FormRequest
 
             'password.required' => 'Mật khẩu không được để trống',
             'email.required' => 'Email không được để trống',
-//            'email.unique' => 'Email đã có người sử dụng',
             'required' => 'Không được để trống',
             'password.min' => 'Mật khẩu phải chứa ít nhất 8 kí tự'
 

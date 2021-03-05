@@ -57,6 +57,7 @@
         </div>
     </li>
 
+    @hasrole('admin')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill" aria-expanded="true" aria-controls="collapseUtill">
             <i class="nav-icon fas fa-tree"></i>
@@ -72,6 +73,8 @@
             </div>
         </div>
     </li>
+    @endhasrole
+
 
 
 
