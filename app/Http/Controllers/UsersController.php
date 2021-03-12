@@ -158,7 +158,7 @@ class UsersController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
-        Excel::import(new UsersImport, request()->file('file'));
+       Excel::import(new UsersImport, request()->file('file'));
 
         return back();
     }

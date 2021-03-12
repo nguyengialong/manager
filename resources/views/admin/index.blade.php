@@ -3,6 +3,11 @@
     Trang chủ
 @endsection
 @section('content')
+
+    @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+    @endif
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Home</h1>

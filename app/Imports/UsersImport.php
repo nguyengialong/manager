@@ -16,6 +16,8 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation
     */
     public function model(array $row)
     {
+
+
         return new User([
 
             'name'     => $row['name'],
