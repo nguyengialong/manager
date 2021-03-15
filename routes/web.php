@@ -42,6 +42,7 @@ Route::group(['prefix'=>'admins'],function(){
     Route::get('/home','AdminController@home')->name('home')->middleware('auth');
 
 
+
 });
 
 Route::group(['prefix'=>'user'],function(){
@@ -74,5 +75,10 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/editPermission/{id}', 'AuthorController@editPermission')->name('editPermission');
     Route::post('/updatePermission/{id}', 'AuthorController@updatePermission')->name('updatePermission');
     Route::get('/deletePermission/{id}', 'AuthorController@destroyPermission')->name('destroyPermission');
+
+    Route::get('/importExcelForm', 'UsersController@importExcelForm')->name('importExcel');
+    Route::post('/importExcelData', 'UsersController@ImportExcelData')->name('importExcelData');
+
+
 
 });

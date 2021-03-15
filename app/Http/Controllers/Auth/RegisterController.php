@@ -58,16 +58,11 @@ class RegisterController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->save();
-//        $this->createRoleformUser($user->id,'admins');
         return redirect()->route('login')->with(['alert' => 'Đăng ký tài khoản thành công']);
 
     }
 
-//    public function createRoleformUser($id,$role){
-//
-//        $user = User::find($id);
-//        $user->assignRole($role);
-//    }
+
 
     /**
      * Get a validator for an incoming registration request.

@@ -11,7 +11,10 @@ use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use Auth;
+use PhpOffice\PhpSpreadsheet\Reader\Exception;
 use Spatie\Permission\Models\Role;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class UsersController extends Controller
 {
@@ -175,6 +178,32 @@ class UsersController extends Controller
 
     }
 
+    public function importExcelForm()
+    {
+        return view('admin.importExcel');
+    }
+
+    public function ImportExcelData(Request $request){
+        $file = $request->file('file');
+        $name = $file->getClientOriginalName();
+        try {
+            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
+        } catch (Exception $e) {
+        }
+        $speadread = $reader->load($name);
+        dd($speadread);
+        $worksheet = $speadread->getActiveSheet();
+        foreach ($worksheet->getRowIterator() as $row){
+            $cell = $row->getCellIterator();
+            $cell->setIterateOnlyExistingCells('false');
+            $data = [];
+            foreach ($cell as $item){
+                $data = $item->getValue();
+            }
+            dd($data);
+        }
+        dd($name);
+    }
 
 
 }
