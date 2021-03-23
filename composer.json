@@ -19,6 +19,7 @@
         "phpoffice/phpexcel": "^1.8",
         "phpoffice/phpspreadsheet": "^1.17",
         "spatie/laravel-permission": "^4.0",
+        "tymon/jwt-auth": "^1.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

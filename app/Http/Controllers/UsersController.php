@@ -43,6 +43,7 @@ class UsersController extends Controller
     }
 
     public function show($id){
+
         if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('detail user')))
         {
             return abort(403, 'Unauthorized action.');
@@ -56,6 +57,7 @@ class UsersController extends Controller
     }
 
     public function store(StoreUserRequest $request){
+
         if(!(Auth()->user()->hasRole('admin') || Auth()->user()->can('add user')))
         {
             return abort(403, 'Unauthorized action.');
@@ -174,6 +176,18 @@ class UsersController extends Controller
         return Excel::download(new UsersExport, 'users.xlsx');
 
     }
+
+    public function getUser(){
+
+        $user = User::all();
+
+        return response()->json([
+            'status'=> 200,
+            'message'=> 'Get User Success',
+            'data'=>$user
+        ]);
+    }
+
 
 
 

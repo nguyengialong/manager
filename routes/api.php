@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/registerApi','Api\ApiController@register');
+Route::post('/loginApi','Api\ApiController@login');
+Route::group(['middleware' => 'auth.jwt'], function(){
+        Route::group(['prefix'=>'user'],function(){
+            Route::get('/list','UsersController@getUser');
+            Route::get('/logout','Api\ApiController@logoutApi');
+        });
+});
+
+
+
+
