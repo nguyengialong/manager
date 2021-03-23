@@ -51,7 +51,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="dropdown-item" href="{{route('importExcel')}}"><i class="fa fa-btn fa-plus"></i> Import Form</a>
+                <a class="dropdown-item" href="{{route('importForm')}}"><i class="fa fa-btn fa-plus"></i> Import Form</a>
                 <a class="dropdown-item" href="{{route('export')}}"><i class="fa fa-btn fa-plus"></i> Export</a>
             </div>
         </div>

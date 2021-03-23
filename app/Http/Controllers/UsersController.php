@@ -161,7 +161,7 @@ class UsersController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
-        Excel::import(new UsersImport, request()->file('file'));
+       Excel::import(new UsersImport, request()->file('file'));
 
         return back();
     }
@@ -178,32 +178,8 @@ class UsersController extends Controller
 
     }
 
-    public function importExcelForm()
-    {
-        return view('admin.importExcel');
-    }
 
-    public function ImportExcelData(Request $request){
-        $file = $request->file('file');
-        $name = $file->getClientOriginalName();
-        try {
-            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
-        } catch (Exception $e) {
-        }
-        $speadread = $reader->load($name);
-        dd($speadread);
-        $worksheet = $speadread->getActiveSheet();
-        foreach ($worksheet->getRowIterator() as $row){
-            $cell = $row->getCellIterator();
-            $cell->setIterateOnlyExistingCells('false');
-            $data = [];
-            foreach ($cell as $item){
-                $data = $item->getValue();
-            }
-            dd($data);
-        }
-        dd($name);
-    }
+
 
 
 }

@@ -3,6 +3,11 @@
     Import File
 @endsection
 @section('content')
+
+    @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+    @endif
+
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
@@ -26,6 +31,7 @@
             </ul>
         </div>
     @endif
+
     <div class="row">
         <div class="col-md-12">
             <div class="card-body">
@@ -34,10 +40,22 @@
                     <input type="file" name="file" required>
                     <br>
                     <br>
-                    <button class="btn btn-primary" type="submit">Import Data</button>
+                    <button class="btn btn-primary" type="submit" >Import Data</button>
                 </form>
             </div>
         </div>
     </div>
 
 @endsection
+{{--@section('js')--}}
+{{--    <script type="text/javascript">--}}
+{{--        function notify() {--}}
+
+{{--            $.notify("", "success");--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endsection--}}
+
+
+
+

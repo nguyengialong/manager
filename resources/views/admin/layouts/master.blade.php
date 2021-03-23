@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>@yield('title')</title>
     <base href="{{asset('')}}">
     <!-- Custom fonts for this template-->
@@ -17,6 +18,9 @@
 
     <!-- Custom styles for this template-->
     <link href="admin/adminpage/css/sb-admin-2.min.css" rel="stylesheet">
+
+{{--    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />--}}
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />--}}
     @yield('css')
 
 </head>
@@ -85,6 +89,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="admin/adminpage/vendor/jquery/jquery.min.js"></script>
+
 <script src="admin/adminpage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -95,8 +100,10 @@
 
 <!-- Page level plugins -->
 <script src="admin/adminpage/vendor/chart.js/Chart.min.js"></script>
-
+{{--<script src="toastr.js"></script>--}}
+{{--<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>--}}
 <!-- Page level custom scripts -->
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>--}}
 {{--<script src="admin/adminpage/js/demo/chart-area-demo.js"></script>--}}
 {{--<script src="admin/adminpage/js/demo/chart-pie-demo.js"></script>--}}
 {{--<script src="https:/adminpage/cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>--}}
