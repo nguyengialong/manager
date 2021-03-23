@@ -63,7 +63,6 @@ class UsersController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
-
         $users = new User();
         $users->name = $request->name;
         $users->email =$request->email;
@@ -177,16 +176,7 @@ class UsersController extends Controller
 
     }
 
-    public function getUser(){
 
-        $user = User::all();
-
-        return response()->json([
-            'status'=> 200,
-            'message'=> 'Get User Success',
-            'data'=>$user
-        ]);
-    }
 
 
 
