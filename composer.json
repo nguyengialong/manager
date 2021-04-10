@@ -18,11 +18,7 @@
         "maatwebsite/excel": "^3.1",
         "phpoffice/phpspreadsheet": "^1.17",
         "spatie/laravel-permission": "^4.0",
-        "phpoffice/phpexcel": "^1.8",
-        "phpoffice/phpspreadsheet": "^1.17",
-        "spatie/laravel-permission": "^4.0",
-        "yoeunes/toastr": "^1.2"
-
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

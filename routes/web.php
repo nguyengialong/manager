@@ -54,13 +54,10 @@ Route::group(['prefix'=>'user'],function(){
     Route::post('/update/{id}','UsersController@update')->name('update_user');
     Route::get('/delete/{id}','UsersController@destroy')->name('delete_user');
     Route::get('/fetch_data','UsersController@fetch_data')->name('fetch_data');
-
     Route::get('/search','UsersController@search')->name('search');
-
     Route::get('/importForm','UsersController@ViewImport')->name('importForm');
-
-    Route::post('/importFile','ImportController@importExcel')->name('importFile');
-    Route::get('/export', 'ImportController@Export')->name('export');
+    Route::post('/importFile','UsersController@importFile')->name('importFile');
+    Route::get('/export', 'UsersController@export')->name('export');
 
     Route::get('/role', 'AuthorController@roleIndex')->name('role');
     Route::get('/addrole', 'AuthorController@creatRole')->name('creatRole');
