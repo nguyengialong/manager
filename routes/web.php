@@ -31,18 +31,14 @@ Route::get('/', function () {
 //});
 
 Route::group(['prefix'=>'admins'],function(){
-
     Auth::routes();
-
     Route::get('/login','Auth\LoginController@login')->name('login');
     Route::get('/register','Auth\RegisterController@register')->name('register');
     Route::get('/logout','Auth\LoginController@logout')->name('logout');
     Route::post('/postlogin','Auth\LoginController@postlogin')->name('post.login');
     Route::post('/register','Auth\RegisterController@postregister')->name('post.register');
     Route::get('/home','AdminController@home')->name('home')->middleware('auth');
-
-
-
+    Route::get('/language/{locale}','LanguageController@changeLanguage')->name('language');
 });
 
 Route::group(['prefix'=>'user'],function(){
@@ -76,7 +72,4 @@ Route::group(['prefix'=>'user'],function(){
 
     Route::get('/importExcelForm', 'UsersController@importExcelForm')->name('importExcel');
     Route::post('/importExcelData', 'UsersController@ImportExcelData')->name('importExcelData');
-
-
-
 });

@@ -145,6 +145,14 @@
             </div>
         </li>
 
+        <!-- Nav Item - Language -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <a class="dropdown-item" href="{{route('language',['en'])}}"><span class="flag-icon flag-icon-us"> </span> English</a>
+                <a class="dropdown-item" href="{{route('language',['vi'])}}"><span class="flag-icon flag-icon-vn"> </span> Vietnamese</a>
+            </div>
+        </li>
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->

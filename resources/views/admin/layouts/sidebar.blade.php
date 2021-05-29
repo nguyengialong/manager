@@ -30,14 +30,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="nav-icon fas fa-tree"></i>
-            <span>Quản lý người dùng</span>
+            <span>{{__('User Manager')}}</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 {{--                @role('admins')--}}
-                    <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> Tạo mới</a>
+                    <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> {{__('Create')}}</a>
 {{--                @endrole--}}
-                <a class="dropdown-item" href="{{route('home')}}"><i class="fa fa-btn fa-list-alt" ></i> Danh sách</a>
+                <a class="dropdown-item" href="{{route('home')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
 
             </div>
         </div>
@@ -47,12 +47,12 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="nav-icon fas fa-tree"></i>
-            <span>Import Export File</span>
+            <span>{{__('Import Export File')}}</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="dropdown-item" href="{{route('importForm')}}"><i class="fa fa-btn fa-plus"></i> Import Form</a>
-                <a class="dropdown-item" href="{{route('export')}}"><i class="fa fa-btn fa-plus"></i> Export</a>
+                <a class="dropdown-item" href="{{route('importForm')}}"><i class="fa fa-btn fa-plus"></i> {{__('Import File')}}</a>
+                <a class="dropdown-item" href="{{route('export')}}"><i class="fa fa-btn fa-plus"></i> {{__('Export File')}}</a>
             </div>
         </div>
     </li>
@@ -61,13 +61,13 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill" aria-expanded="true" aria-controls="collapseUtill">
             <i class="nav-icon fas fa-tree"></i>
-            <span>Role && Permission</span>
+            <span>{{__('Role && Permission')}}</span>
         </a>
         <div id="collapseUtill" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 {{--                @role('admins')--}}
-                    <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> Role</a>
-                    <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> Permission</a>
+                    <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Role')}}</a>
+                    <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Permission')}}</a>
 {{--                @endrole--}}
 
             </div>
@@ -92,7 +92,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <span>{{__('Pages')}}</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Home</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{__('Home')}}</h1>
     </div>
 
     <!-- Content Row -->
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Danh mục</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{__('Categories')}}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Người dùng</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">{{__('Users')}}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
@@ -58,7 +58,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Bài viết</div>
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{__('Posts')}}</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
@@ -79,7 +79,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Bình luận</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{__('Comments')}}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                         </div>
                         <div class="col-auto">
