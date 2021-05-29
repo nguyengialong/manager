@@ -39,6 +39,8 @@ Route::group(['prefix'=>'admins'],function(){
     Route::post('/register','Auth\RegisterController@postregister')->name('post.register');
     Route::get('/home','AdminController@home')->name('home')->middleware('auth');
     Route::get('/language/{locale}','LanguageController@changeLanguage')->name('language');
+    Route::get('/login/{provider}','SocialController@redirectToFacebookOrGoogle')->name('facebook_login');
+    Route::get('/login/{provider}/callback','SocialController@handleFacebookCallback')->name('facebook_login_callback');
 });
 
 Route::group(['prefix'=>'user'],function(){
