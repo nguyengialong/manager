@@ -37,14 +37,14 @@ Route::group(['prefix' => 'admins'], function () {
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::post('/postlogin', 'Auth\LoginController@postlogin')->name('post.login');
     Route::post('/register', 'Auth\RegisterController@postregister')->name('post.register');
-    Route::get('/home', 'AdminController@home')->name('home')->middleware('auth');
+    Route::get('/home', 'AdminController@home')->name('home')->middleware('checkLogin');
     Route::get('/language/{locale}', 'LanguageController@changeLanguage')->name('language');
     Route::get('/login/{provider}', 'SocialController@redirectToFacebookOrGoogle')->name('facebook_login');
     Route::get('/login/{provider}/callback',
         'SocialController@handleFacebookCallback')->name('facebook_login_callback');
 });
 
-Route::group(['prefix' => 'user'], function () {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
     Route::get('/add', 'UsersController@creat')->name('add_user');
     Route::post('/store', 'UsersController@store')->name('user_store');
@@ -77,7 +77,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/importExcelData', 'UsersController@ImportExcelData')->name('importExcelData');
 });
 
-Route::group(['prefix' => 'blog'], function () {
+Route::group(['prefix' => 'blog', 'middleware' => 'auth'], function () {
     Route::get('/home', 'BlogController@index')->name('blog_home');
     Route::get('/food', 'BlogController@food')->name('food');
     Route::get('/contact', 'BlogController@contact')->name('contact');
