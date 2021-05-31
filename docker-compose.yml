@@ -59,16 +59,3 @@ services:
     container_name: manager_redis
     ports:
       - "6397:6379"
-
-
-
-
-
-
-
-
-
-
-
-
-

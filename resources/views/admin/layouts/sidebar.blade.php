@@ -56,8 +56,6 @@
             </div>
         </div>
     </li>
-
-    @hasrole('admin')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill" aria-expanded="true" aria-controls="collapseUtill">
             <i class="nav-icon fas fa-tree"></i>
@@ -65,21 +63,53 @@
         </a>
         <div id="collapseUtill" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-{{--                @role('admins')--}}
-                    <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Role')}}</a>
-                    <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Permission')}}</a>
-{{--                @endrole--}}
+                <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Role')}}</a>
+                <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Permission')}}</a>
 
             </div>
         </div>
     </li>
-    @endhasrole
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill2" aria-expanded="true" aria-controls="collapseUtill2">
+            <i class="nav-icon fas fa-tree"></i>
+            <span>{{__('Category Manager')}}</span>
+        </a>
+        <div id="collapseUtill2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="dropdown-item" href="{{route('create_category')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Create')}}</a>
+                <a class="dropdown-item" href="{{route('list_category')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
 
+            </div>
+        </div>
+    </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill3" aria-expanded="true" aria-controls="collapseUtill3">
+            <i class="nav-icon fas fa-tree"></i>
+            <span>{{__('Post Manager')}}</span>
+        </a>
+        <div id="collapseUtill3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="dropdown-item" href="{{route('add_post')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Create')}}</a>
+                <a class="dropdown-item" href="{{route('list_posts')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
 
+            </div>
+        </div>
+    </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtill4" aria-expanded="true" aria-controls="collapseUtill4">
+            <i class="nav-icon fas fa-tree"></i>
+            <span>{{__('Comment Manager')}}</span>
+        </a>
+        <div id="collapseUtill4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="dropdown-item" href="{{route('list_comments')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
 
+            </div>
+        </div>
+    </li>
 <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -96,21 +126,10 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Blog</a>
+                <a class="collapse-item" href="{{route('blog_home')}}">Blog</a>
             </div>
         </div>
     </li>
-
-    <!-- Nav Item - Charts -->
-
-
-    <!-- Nav Item - Tables -->
-{{--       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li> --}}
-
 <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

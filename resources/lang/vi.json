@@ -3,8 +3,8 @@
     "Role && Permission" : "Phân quyền",
     "Pages" : "Trang web",
     "Import Export File" : "Nhập xuất file",
-    "Create" : "Tạo mới người dùng",
-    "List" : "Danh sách người dùng",
+    "Create" : "Tạo mới",
+    "List" : "Danh sách",
     "Import File" : "Nhập file",
     "Export File" : "Xuất file",
     "Role": "Vai trò",
@@ -14,5 +14,9 @@
     "Categories" : "Danh mục",
     "Users" : "Người dùng",
     "Posts" : "Bài viết",
-    "Comments" : "Bình luận"
+    "Comments" : "Bình luận",
+    "Category Manager" : "Quản lý danh mục",
+    "Post Manager": "Quản lý bài viết",
+    "Comment Manager" : "Quản lý bình luận"
+
 }
