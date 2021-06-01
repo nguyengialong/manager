@@ -107,6 +107,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'comment', 'middleware' => 'auth'], function () {
     Route::get('/list', 'CommentController@list')->name('list_comments');
     Route::get('/delete/{id}', 'CommentController@destroy')->name('destroy_comments');
+    Route::post('/add/{id}', 'CommentController@store')->name('store_comments');
 });
 
 

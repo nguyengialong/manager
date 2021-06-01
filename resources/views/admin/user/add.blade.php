@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form"  action="{{route('store_category')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                <form role="form"  action="{{route('user_store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     @if ($errors->any())
@@ -41,32 +41,32 @@
                     @endif
 
                     <div class="card-body">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tên danh mục</label>
-                                <input type="text" name = "name" class="form-control" id="" placeholder="Điền tên danh mục">
-                            </div>
-                            <div class="form-group">
-                                <label>Danh mục món ăn</label>
-                                <select class="form-control select2" style="width: 100%;" name ="type">
-                                    <option>--Chọn loại món ăn---</option>
-                                    <option value="1">Sea Food</option>
-                                    <option value="2">Local Food</option>
-                                    <option value="3">Healthy Food</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Hình ảnh món ăn</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" multiple>
-                                        <label class="custom-file-label" for="exampleInputFile" >Choose file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Upload</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên</label>
+                            <input type="text" class="form-control" id=""  name="name" placeholder="Tên người dùng">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" name="email" id="" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Phone</label>
+                            <input type="number" class="form-control" id="" name="phone" placeholder="Nhập vào số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Address</label>
+                            <input type="text" class="form-control" id="" name="address" placeholder="Nhập vào địa chỉ">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mật khẩu</label>
+                            <input type="password" class="form-control" id="" name="password" placeholder="Nhập vào mật khẩu">
+                        </div>
+                        <div class="form-group">
+                            <label>Quyền</label>
+                            <select class="form-control select2" name="role" style="width: 100%;">
+                                <option value="0">User</option>
+                            </select>
+                        </div>
                     </div>
                     <!-- /.card-body -->
 

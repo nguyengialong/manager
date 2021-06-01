@@ -66,11 +66,12 @@
                                     <div class="vcard bio">
                                         <img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">
                                     </div>
-                                    <div class="comment-body">
-                                        <h3>{{$value->email}}</h3>
-                                        <div class="meta">{{$value->created_at}}</div>
-                                        <p>{{$value->message}}</p>
-                                        <p><a href="#" class="reply">Reply</a></p>
+                                    <div class="comment-body" id="data">
+                                        <h2>{{strtoupper($value->role)}}</h2>
+                                        <h3>{{$value->name}}</h3>
+                                        <div class="meta">{{date('d-m-y H:i:s',strtotime($value->created_at))}}</div>
+                                        <p id="{{$value->id}}">{{$value->message}}</p>
+                                        <p><a class="reply">Reply</a></p>
                                     </div>
                                 </li>
                             @endforeach
@@ -78,20 +79,19 @@
                         <!-- END comment-list -->
 
                         <div class="comment-form-wrap pt-5">
-                            <h3 class="mb-5">Post your comment</h3>
+                            <h3 class="mb-5">Comment post</h3>
                             @guest
                                 <p>Bạn chưa đăng nhập. Vui lòng đăng nhập</p>
                                 <a href="{{route('login')}}">Login</a>
                             @else
-                                <form action="" method="post" class="p-5 bg-light">
+                                <form action="{{route('store_comments',$post->id)}}" method="post" class="p-5 bg-light">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="message">Comment in here</label>
-                                        <textarea name="comment" id="name_comment" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="message" id="name_comment" cols="30" rows="10" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
-
-                                        <button type="submit" value="" id="addcoment" data-id={{$post->id}} class="btn py-3 px-4 btn-primary">Post Comment</button>
+                                        <button type="submit"  class="btn py-3 px-4 btn-primary">Submit</button>
                                     </div>
 
                                 </form>
@@ -163,42 +163,18 @@
 @endsection
 
 @section('js')
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        $(document).on('click', '#addcoment', function(e) {
-
-            e.preventDefault();
-
-            var id = $(this).attr('data-id');
-            var name_comment =  $('#name_comment').val();
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
 
 
-            $.ajax({
+    var socket = io('http://127.0.0.1:9000', {transport: ['websocket']});
+    socket.on('chat:message', function (data) {
+        if ($('#' + data.id).length == 0) {
+            $('#data').append('<p>' + data.message + '</p>')
+        } else {
+            console.log('sent')
+        }
+    })
 
-                type: 'post',
-                url: "blogs/comment/"+id,
-                data:{
-                    content : name_comment,
-                    id : id,
-
-                },
-                success: function (res) {
-
-                    $('.comment-list').append('<li class="comment"><div class="vcard bio"><img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder"></div><div class="comment-body"><h3>'+ res.comment.email +'</h3><div class="meta">'+ res.comment.created_at +'</div><p>'+ res.comment.content +'</p><p><a href="#" class="reply">Reply</a></p></div></li>');
-                    $('#name_comment').val('');
-
-                },
-                error: function (error) {
-
-                }
-            })
-
-        })
-
-    </script>
+</script>
 @endsection

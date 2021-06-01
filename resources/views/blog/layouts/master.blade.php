@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="blogpage/blog/css/icomoon.css">
     <link rel="stylesheet" href="blogpage/blog/css/style.css">
     <script src="https://kit.fontawesome.com/3ad27d0fef.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-     crossorigin="anonymous">
-   </script>
+      <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+              crossorigin="anonymous">
+      </script>
 
     @yield('css')
   </head>

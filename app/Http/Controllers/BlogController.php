@@ -27,15 +27,20 @@ class BlogController extends Controller
     }
 
     public function detail($id){
+
         $post = Post::find($id);
         $comments = Comment::all();
         $categories = Category::all();
         $most_view = Post::orderBy('view_count', 'desc')->get();
 
-        if ($this->isPostViewed($post))
-        {
+        $view = 'post_view' . $post->id;
+
+        if (!Session::has($view)){
             $post->increment('view_count');
-            $this->storePost($post);
+            Session::put($view, time());
+        }else{
+            $post->increment('view_count');
+            Session::put($view, time());
         }
         return view('blog.detail',compact('post','comments','categories','most_view'));
     }
@@ -52,19 +57,17 @@ class BlogController extends Controller
         return view('blog.contact');
     }
 
-    public function isPostViewed($post)
-    {
-        $viewed = Session::get('viewed_posts', []);
-
-         return array_key_exists($post->id, $viewed);
-    }
-
-    public function storePost($post)
-    {
-        $key = 'viewed_posts.' . $post->id;
-
-        Session::put($key, time());
-    }
-
-
+//    public function isPostViewed($post)
+//    {
+//        $viewed = Session::get('viewed_posts', []);
+//
+//         return array_key_exists($post->id, $viewed);
+//    }
+//
+//    public function storePost($post)
+//    {
+//        $key = 'viewed_posts.' . $post->id;
+//
+//        Session::put($key, time());
+//    }
 }
