@@ -66,12 +66,11 @@
                                     <div class="vcard bio">
                                         <img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">
                                     </div>
-                                    <div class="comment-body" id="data">
-                                        <h2>{{strtoupper($value->role)}}</h2>
-                                        <h3>{{$value->name}}</h3>
-                                        <div class="meta">{{date('d-m-y H:i:s',strtotime($value->created_at))}}</div>
+                                    <div class="comment-body">
+                                        <h2 id="{{$value->id}}">{{strtoupper($value->role)}}</h2>
+                                        <h3 id="{{$value->id}}">{{$value->name}}</h3>
+                                        <div class="meta" id="{{$value->id}}">{{date('d-m-y H:i:s',strtotime($value->created_at))}}</div>
                                         <p id="{{$value->id}}">{{$value->message}}</p>
-                                        <p><a class="reply">Reply</a></p>
                                     </div>
                                 </li>
                             @endforeach
@@ -88,10 +87,10 @@
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="message">Comment in here</label>
-                                        <textarea name="message" id="name_comment" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="comment" id="content" cols="30" rows="10" class="form-control" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit"  class="btn py-3 px-4 btn-primary">Submit</button>
+                                        <button type="submit"  id= "addcoment" data-id="{{$post->id}}"  class="btn py-3 px-4 btn-primary">Submit</button>
                                     </div>
 
                                 </form>
@@ -161,19 +160,79 @@
     </section> <!-- .section -->
 
 @endsection
-
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
-
-    var socket = io('http://127.0.0.1:9000', {transport: ['websocket']});
-    socket.on('chat:message', function (data) {
-        if ($('#' + data.id).length == 0) {
-            $('#data').append('<p>' + data.message + '</p>')
-        } else {
-            console.log('sent')
+    var connectionOptions = {
+        "force new connection": true,
+        "reconnectionAttempts": "Infinity",
+        "timeout": 1000,
+        "transports": ["websocket"]
+    };
+    var socket = io('http://127.0.0.1:3000', connectionOptions);
+    socket.on('laravel_database_chat:message', function (data) {
+        console.log(data)
+        var date = new Date(data.created_at);
+        if ($('#' + data.id).length === 0) {
+            $('.comment-list').append('' +
+                '<li class="comment"><div class="vcard bio">' +
+                '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
+                '</div><div class="comment-body">' +
+                '<h2>' + data.role.toUpperCase() + '</h2>' +
+                '<h3>' + data.name + '</h3>' +
+                '<div class="meta">' + date.toISOString().substr(0,10)  + '</div>' +
+                '<p>' + data.message + '</p><p>' +
+                '<a class="reply">Reply</a></p></div></li>');
+        }else{
+            console.log('Sent')
         }
+    })
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $(document).on('click', '#addcoment', function(e) {
+
+        e.preventDefault();
+
+        var id = $(this).attr('data-id');
+        var content =  $('#content').val();
+
+
+        $.ajax({
+
+            type: 'post',
+            url: "comment/add/"+id,
+            data:{
+                message : content,
+                id : id,
+
+            },
+            success: function (res) {
+                console.log(res.data)
+                // if ($('#' + res.data.id).length === 0) {
+                //     $('.comment-list').append('' +
+                //         '<li class="comment"><div class="vcard bio">' +
+                //         '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
+                //         '</div><div class="comment-body">' +
+                //         '<h2>' + res.data.role.toUpperCase() + '</h2>' +
+                //         '<h3>' + res.data.name + '</h3>' +
+                //         '<div class="meta">' + new Date(res.data.created_at).getDate() + '</div>' +
+                //         '<p>' + res.data.message + '</p><p>' +
+                //         '<a class="reply">Reply</a></p></div></li>');
+                // }else{
+                //     console.log('Sent')
+                // }
+            },
+
+            error: function (error) {
+                console.log(error)
+            }
+        })
+
     })
 
 </script>

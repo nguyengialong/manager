@@ -22,11 +22,12 @@ class CommentController extends Controller
         $comment->post_id = $id;
         $comment->role = Auth::user()->getRoleNames()[0];
         $comment->message = $request->message;
+
         $comment->save();
         event(
             $e = new RedisEvents($comment)
         );
-        return redirect()->back();
+        return response()->json(['data'=>$comment],200);
     }
 
     public function destroy($id){

@@ -41,4 +41,5 @@ class RedisEvents implements ShouldBroadcast
     {
         return 'message';
     }
+
 }
