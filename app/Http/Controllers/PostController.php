@@ -12,6 +12,11 @@ class PostController extends Controller
 {
     public function index()
     {
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $data = Post::orderBy('created_at', 'desc')->paginate(4);
         return view('admin.post.index', compact('data'));
     }
@@ -24,6 +29,10 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         $id = Auth::id();
         $file = $request->file('image');
@@ -45,6 +54,11 @@ class PostController extends Controller
 
     public function edit($id)
     {
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $posts = Post::find($id);
         $categories = Category::all();
         return view('admin.post.edit', compact('posts','categories'));
@@ -52,6 +66,10 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
 
         $posts = Post::find($id);
         if($request->file('image')){
@@ -80,6 +98,11 @@ class PostController extends Controller
 
     public function destroy($id)
     {
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $posts = Post::find($id);
         $posts->delete();
         return redirect()->route('list_posts');

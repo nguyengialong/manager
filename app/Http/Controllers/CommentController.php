@@ -11,6 +11,12 @@ class CommentController extends Controller
 {
     use HasRoles;
     public function list(){
+
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $comments = Comment::paginate('5');
         return view('admin.comment.index',compact('comments'));
     }
@@ -31,6 +37,12 @@ class CommentController extends Controller
     }
 
     public function destroy($id){
+
+        if(!(Auth()->user()->hasRole('admin')))
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $comments = Comment::find($id);
         $comments->delete();
         return redirect()->route('list_comments');
