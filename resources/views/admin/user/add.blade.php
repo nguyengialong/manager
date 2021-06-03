@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label>Quyền</label>
                             <select class="form-control select2" name="role" style="width: 100%;">
-                                <option value="0">User</option>
+                                <option value="user">User</option>
                             </select>
                         </div>
                     </div>
