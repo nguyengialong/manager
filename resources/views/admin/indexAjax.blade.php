@@ -32,17 +32,17 @@
 
                             <td>
 
-                                @can('detail user')
+{{--                                @can('detail user')--}}
                                     <a href="{{route('detail_user',$value->id)}}" class="btn btn-success">Detail</a>
-                                @endcan
+{{--                                @endcan--}}
 
-                                @can('edit user')
+{{--                                @can('edit user')--}}
                                     <a href="{{route('edit_user',$value->id)}}" class="btn btn-outline-primary">Edit</a>
-                                @endcan
+{{--                                @endcan--}}
 
-                                @can('delete user')
+{{--                                @can('delete user')--}}
                                     <a href="{{route('delete_user',$value->id)}}" class="btn btn-danger">Delete</a>
-                                @endcan
+{{--                                @endcan--}}
 
 
                             </td>

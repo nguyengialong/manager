@@ -34,9 +34,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-{{--                @role('admins')--}}
                     <a class="dropdown-item" href="{{route('add_user')}}"><i class="fa fa-btn fa-plus"></i> {{__('Create')}}</a>
-{{--                @endrole--}}
                 <a class="dropdown-item" href="{{route('home')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
 
             </div>
@@ -65,7 +63,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="dropdown-item" href="{{route('role')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Role')}}</a>
                 <a class="dropdown-item" href="{{route('permission')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Permission')}}</a>
-
             </div>
         </div>
     </li>
@@ -79,7 +76,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="dropdown-item" href="{{route('create_category')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Create')}}</a>
                 <a class="dropdown-item" href="{{route('list_category')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
-
             </div>
         </div>
     </li>
@@ -93,7 +89,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="dropdown-item" href="{{route('add_post')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('Create')}}</a>
                 <a class="dropdown-item" href="{{route('list_posts')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
-
             </div>
         </div>
     </li>
@@ -106,7 +101,6 @@
         <div id="collapseUtill4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="dropdown-item" href="{{route('list_comments')}}"><i class="fa fa-btn fa-list-alt" ></i> {{__('List')}}</a>
-
             </div>
         </div>
     </li>

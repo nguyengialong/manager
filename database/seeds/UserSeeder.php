@@ -15,16 +15,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-//        $role1 = Role::create(['name' => 'admin']);
-//        $role2 = Role::create(['name' => 'user']);
+        $role1 = Role::create(['name' => 'admin']);
+        $role2 = Role::create(['name' => 'user']);
 
-//        Permission::create(['name' => 'add user']);
-//        Permission::create(['name' => 'edit user']);
-//        Permission::create(['name' => 'detail user']);
-//        Permission::create(['name' => 'delete user']);
-//        Permission::create(['name' => 'add role']);
-//        Permission::create(['name' => 'edit role']);
-//        Permission::create(['name' => 'delete role']);
+        Permission::create(['name' => 'add user']);
+        Permission::create(['name' => 'edit user']);
+        Permission::create(['name' => 'detail user']);
+        Permission::create(['name' => 'delete user']);
+        Permission::create(['name' => 'add role']);
+        Permission::create(['name' => 'edit role']);
+        Permission::create(['name' => 'delete role']);
 
 
 
