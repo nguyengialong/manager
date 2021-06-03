@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             'address' => 'ha noi',
             'phone' => '12345671'
         ]);
-        $user->assignRole($role1);
+        $user->assignRole('admin');
         $user->givePermissionTo('add user', 'edit user','detail user','delete user','add role','edit role','delete role');
 
     }
