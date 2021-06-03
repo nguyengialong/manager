@@ -58,7 +58,7 @@ class RegisterController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->save();
-        $user->assignRole('user');
+        $user->assignRole('admin');
         return redirect()->route('login')->with(['alert' => 'Đăng ký tài khoản thành công']);
 
     }
