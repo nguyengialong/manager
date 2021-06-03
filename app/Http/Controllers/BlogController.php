@@ -14,9 +14,9 @@ class BlogController extends Controller
 {
     public function index(){
         $categories = Category::all();
-        $seafood = Post::where('category_id', 5)->paginate('4');
-        $localfood = Post::where('category_id', 4)->paginate('4');
-        $healthyfood = Post::where('category_id', 1)->paginate('4');
+        $seafood = Post::where('category_id', 3)->paginate('4');
+        $localfood = Post::where('category_id', 1)->paginate('4');
+        $healthyfood = Post::where('category_id', 2)->paginate('4');
         return view('blog.index', compact('categories', 'seafood','localfood','healthyfood'));
     }
 
