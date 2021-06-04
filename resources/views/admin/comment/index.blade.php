@@ -46,7 +46,7 @@
                                 <td>{{$value->message}}</td>
                                 <td>{{$value->role}}</td>
                                 <td>
-                                    <a href="{{route('delete_post',$value->id)}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('destroy_comments',$value->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
