@@ -172,20 +172,20 @@
     var socket = io('http://127.0.0.1:3000', connectionOptions);
     socket.on('laravel_database_chat:message', function (data) {
         console.log(data)
-        var date = new Date(data.created_at);
-        if ($('#' + data.id).length === 0) {
-            $('.comment-list').append('' +
-                '<li class="comment"><div class="vcard bio">' +
-                '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
-                '</div><div class="comment-body">' +
-                '<h2>' + data.role.toUpperCase() + '</h2>' +
-                '<h3>' + data.name + '</h3>' +
-                '<div class="meta">' + date.toISOString().substr(0,10)  + '</div>' +
-                '<p>' + data.message + '</p><p>' +
-                '<a class="reply">Reply</a></p></div></li>');
-        }else{
-            console.log('Sent')
-        }
+        // var date = new Date(data.created_at);
+        // if ($('#' + data.id).length === 0) {
+        //     $('.comment-list').append('' +
+        //         '<li class="comment"><div class="vcard bio">' +
+        //         '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
+        //         '</div><div class="comment-body">' +
+        //         '<h2>' + data.role.toUpperCase() + '</h2>' +
+        //         '<h3>' + data.name + '</h3>' +
+        //         '<div class="meta">' + date.toISOString().substr(0,10)  + '</div>' +
+        //         '<p>' + data.message + '</p><p>' +
+        //         '<a class="reply">Reply</a></p></div></li>');
+        // }else{
+        //     console.log('Sent')
+        // }
     })
 </script>
 <script>
@@ -213,19 +213,19 @@
             },
             success: function (res) {
                 console.log(res.data)
-                // if ($('#' + res.data.id).length === 0) {
-                //     $('.comment-list').append('' +
-                //         '<li class="comment"><div class="vcard bio">' +
-                //         '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
-                //         '</div><div class="comment-body">' +
-                //         '<h2>' + res.data.role.toUpperCase() + '</h2>' +
-                //         '<h3>' + res.data.name + '</h3>' +
-                //         '<div class="meta">' + new Date(res.data.created_at).getDate() + '</div>' +
-                //         '<p>' + res.data.message + '</p><p>' +
-                //         '<a class="reply">Reply</a></p></div></li>');
-                // }else{
-                //     console.log('Sent')
-                // }
+                if ($('#' + res.data.id).length === 0) {
+                    $('.comment-list').append('' +
+                        '<li class="comment"><div class="vcard bio">' +
+                        '<img src="blogpage/blog/images/person_1.jpg" alt="Image placeholder">' +
+                        '</div><div class="comment-body">' +
+                        '<h2>' + res.data.role.toUpperCase() + '</h2>' +
+                        '<h3>' + res.data.name + '</h3>' +
+                        '<div class="meta">' + new Date(res.data.created_at).getDate() + '</div>' +
+                        '<p>' + res.data.message + '</p><p>' +
+                        '<a class="reply">Reply</a></p></div></li>');
+                }else{
+                    console.log('Sent')
+                }
             },
 
             error: function (error) {
