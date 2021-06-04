@@ -31,15 +31,15 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '',
-        'client_secret' => '',
-        'redirect' => 'http://localhost:8000/admins/login/facebook/callback',
+        'client_id' => '601123237272212',
+        'client_secret' => 'd0ab1ea1d7ac0a4400829a946062f903',
+        'redirect' => 'https://app-blog-food.herokuapp.com/admins/login/facebook/callback',
     ],
 
     'google' => [
-        'client_id'     => '',
-        'client_secret' => '',
-        'redirect'      => 'http://127.0.0.1:8000/admins/login/google/callback'
+        'client_id'     => '697803386976-fkn5ghamgsk06nr16cpbeg5im56f3no1.apps.googleusercontent.com',
+        'client_secret' => 'eF8eRjXAJZ3qihFHZRESuYro',
+        'redirect'      => 'https://app-blog-food.herokuapp.com/admins/login/google/callback'
     ],
 
 ];
