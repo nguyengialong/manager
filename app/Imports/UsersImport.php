@@ -26,7 +26,6 @@ class UsersImport implements ToModel,WithHeadingRow,WithValidation
             'password' => bcrypt('12345678'),
             'address'  => $row['address'],
             'phone'    => $row['phone'],
-            'remember_token' => $row['remember_token']
 
         ]);
 
