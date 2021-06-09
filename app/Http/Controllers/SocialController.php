@@ -26,7 +26,6 @@ class SocialController extends Controller
         if(!$socialProvider){
             $user = User::where('email',$socialUser->getEmail())->first();
             if($user){
-                $user = User::where('email',$socialUser->getEmail())->delete();
                 return redirect()->route('login')->with(['message'=>'Email đã được sử dụng']);
             }else{
                 $user = new  User();
